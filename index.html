@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>타르코프 타길라팀 | 대리 & 루블 & 아이템</title>
+<meta name="description" content="타르코프 전문 대리팀. 퀘스트, 레벨업, 루블, 아이템 판매, PVP 동행. 클린 작업, 빠른 상담.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --card: #141414;
+  --card-hover: #1a1a1a;
+  --accent: #c8aa6e;
+  --accent-dark: #a08a4e;
+  --text: #e8e8e8;
+  --text-sub: #999;
+  --danger: #ff4444;
+  --success: #44cc66;
+  --border: #222;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, var(--bg) 100%),
+              linear-gradient(135deg, #0a0a0a 0%, #1a1510 50%, #0a0a0a 100%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(200,170,110,0.08) 0%, transparent 70%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(200,170,110,0.15);
+  color: var(--accent);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(200,170,110,0.2);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-sub);
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+.btn-primary:hover {
+  background: #dabb7a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200,170,110,0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.section-title p {
+  color: var(--text-sub);
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s;
+}
+
+.service-card:hover {
+  background: var(--card-hover);
+  border-color: rgba(200,170,110,0.3);
+  transform: translateY(-4px);
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background: rgba(200,170,110,0.1);
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.service-card p {
+  color: var(--text-sub);
+  font-size: 0.95rem;
+}
+
+.trust-section {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.trust-item .number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.trust-item .label {
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.feature-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(68,204,102,0.15);
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.feature h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.feature p {
+  color: var(--text-sub);
+  font-size: 0.85rem;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+.cta-box {
+  max-width: 600px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(200,170,110,0.1) 0%, rgba(200,170,110,0.05) 100%);
+  border: 1px solid rgba(200,170,110,0.2);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+}
+
+.cta-box h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.cta-box p {
+  color: var(--text-sub);
+  margin-bottom: 2rem;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.kakao {
+  background: #FEE500;
+  color: #000;
+}
+.kakao:hover {
+  background: #ffed4a;
+  transform: translateY(-2px);
+}
+
+.discord {
+  background: #5865F2;
+  color: #fff;
+}
+.discord:hover {
+  background: #6b76f5;
+  transform: translateY(-2px);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-sub);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+.warn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,68,68,0.1);
+  color: var(--danger);
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 90vh; }
+  .cta-group { flex-direction: column; align-items: center; }
+  .btn { width: 100%; max-width: 280px; justify-content: center; }
+  section { padding: 3rem 1rem; }
+  .contact-links { flex-direction: column; align-items: center; }
+  .contact-link { width: 100%; max-width: 280px; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="badge">2026 SEASON</div>
+    <h1><span>타르코프</span> 타길라팀</h1>
+    <p>퀘스트 / 레벨업 / 루블 / 아이템 / PVP 동행<br>클린 작업으로 안전하게, 빠르게</p>
+    <div class="cta-group">
+      <a href="#contact" class="btn btn-primary">상담 문의하기</a>
+      <a href="#services" class="btn btn-secondary">서비스 보기</a>
+    </div>
+  </div>
+</div>
+
+<div class="trust-section">
+  <section>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="number">100%</div>
+        <div class="label">클린 작업</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">NO</div>
+        <div class="label">핵 / 매크로 사용 없음</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">24H</div>
+        <div class="label">빠른 응답</div>
+      </div>
+      <div class="trust-item">
+        <div class="number">ALL</div>
+        <div class="label">전 시즌 경력</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="services">
+  <div class="section-title">
+    <h2>서비스</h2>
+    <p>필요한 서비스를 선택하세요</p>
+  </div>
+  <div class="services">
+    <div class="service-card">
+      <div class="service-icon">&#x1F4CB;</div>
+      <h3>퀘스트 대리</h3>
+      <p>막히는 퀘스트를 빠르게 클리어해 드립니다. 메인/사이드 모두 가능.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#x2B06;</div>
+      <h3>레벨업</h3>
+      <p>원하는 레벨까지 빠르고 안전하게 올려드립니다.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#x1F4B0;</div>
+      <h3>루블 판매</h3>
+      <p>합리적인 가격으로 루블을 판매합니다. 안전 거래.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#x1F392;</div>
+      <h3>아이템 판매</h3>
+      <p>필요한 아이템을 구해드립니다. 키/장비/소모품 등.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#x1F3AF;</div>
+      <h3>PVP 동행</h3>
+      <p>같이 레이드 돌면서 PVP를 도와드립니다.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#x1F6E1;</div>
+      <h3>은신처 업그레이드</h3>
+      <p>은신처 업그레이드에 필요한 아이템과 작업을 도와드립니다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>왜 타길라팀인가</h2>
+    <p>안전하고 빠른 서비스를 약속합니다</p>
+  </div>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-check">&#x2713;</div>
+      <div>
+        <h4>100% 클린 작업</h4>
+        <p>핵, 매크로, 버그 악용 절대 없음</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-check">&#x2713;</div>
+      <div>
+        <h4>계정 안전 보장</h4>
+        <p>밴 위험 없는 안전한 방식으로만 작업</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-check">&#x2713;</div>
+      <div>
+        <h4>빠른 상담</h4>
+        <p>카카오톡/디스코드로 빠르게 응답</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-check">&#x2713;</div>
+      <div>
+        <h4>합리적 가격</h4>
+        <p>거품 없는 합리적인 가격</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-check">&#x2713;</div>
+      <div>
+        <h4>경력 보유</h4>
+        <p>다수의 시즌 경력과 노하우</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-check">&#x2713;</div>
+      <div>
+        <h4>진행 상황 공유</h4>
+        <p>작업 중 실시간으로 진행 상황 알려드림</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-box">
+    <h2>문의하기</h2>
+    <p>편한 곳으로 연락 주세요. 가격 상담 무료!</p>
+    <div class="contact-links">
+      <a href="#" class="contact-link kakao">&#x1F4AC; 카카오톡 오픈채팅</a>
+      <a href="#" class="contact-link discord">&#x1F3AE; 디스코드</a>
+    </div>
+    <div class="warn">&#x26A0; 선입금 후 작업이 진행되며, 작업 중 환불은 어렵습니다.</div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 타르코프 타길라팀. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
